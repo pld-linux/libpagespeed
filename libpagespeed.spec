@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with		verbose		# verbose build (V=1)
+
 # TODO
 # - https://developers.google.com/speed/pagespeed/psol
 # - build using system libs:
@@ -16,7 +20,7 @@
 Summary:	Page Speed native libraries
 Name:		libpagespeed
 Version:	1.12.16.0
-Release:	0.1
+Release:	0.2
 License:	Apache v2.0
 Group:		Libraries
 Source0:	%{name}-%{version}.tar.xz
@@ -45,6 +49,12 @@ CXX="%{__cxx}" \
 	--format=make \
 	--depth=. \
 	build/all.gyp \
+	-Duse_openssl=1 \
+	-Duse_system_icu=0 \
+	-Duse_system_libjpeg=1 \
+	-Duse_system_libpng=1 \
+	-Duse_system_ssl=1 \
+	-Duse_system_zlib=1 \
 	%{nil}
 
 %{__make} \

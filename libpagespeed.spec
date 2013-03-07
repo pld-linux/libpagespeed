@@ -58,7 +58,7 @@ CXX="%{__cxx}" \
 	-Duse_system_zlib=1 \
 	%{nil}
 
-%{__make} \
+%{__make} -r \
 	BUILDTYPE=%{!?debug:Release}%{?debug:Debug} \
 	%{?with_verbose:V=1} \
 	CC="%{__cc}" \

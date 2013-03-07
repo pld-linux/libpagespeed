@@ -42,7 +42,8 @@ Page Speed rule logic.
 %setup -q
 
 %build
-# re-gen makefiles
+test %{_specdir}/%{name}.spec -nt Makefile && %{__rm} -f Makefile
+test -e Makefile || \
 CC="%{__cc}" \
 CXX="%{__cxx}" \
 %{__python} build/gyp_chromium \

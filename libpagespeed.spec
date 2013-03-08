@@ -19,13 +19,14 @@
 Summary:	Page Speed native libraries
 Name:		libpagespeed
 Version:	1.12.16.0
-Release:	0.4
+Release:	0.5
 License:	Apache v2.0
 Group:		Libraries
 Source0:	%{name}-%{version}.tar.xz
 # Source0-md5:	8558c2b583e5858360846299284eb231
 Source1:	get-source.sh
 Source2:	gclient.conf
+Source3:	clean-source.sh
 Patch0:		system-libs.patch
 URL:		https://code.google.com/p/page-speed/
 BuildRequires:	gperf
@@ -43,6 +44,10 @@ Page Speed rule logic.
 %prep
 %setup -q
 %patch0 -p1
+
+ln -s %{SOURCE3} .
+
+sh -x clean-source.sh
 
 %build
 test %{_specdir}/%{name}.spec -nt Makefile && %{__rm} -f Makefile

@@ -29,7 +29,9 @@ Source1:	get-source.sh
 Source2:	gclient.conf
 Patch0:		system-libs.patch
 URL:		https://code.google.com/p/page-speed/
+BuildRequires:	gperf
 BuildRequires:	libstdc++-devel
+BuildRequires:	python-modules
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz

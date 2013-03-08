@@ -15,12 +15,11 @@
 #  - libwebp
 #  - optipng
 #  - protobuf
-#  - zlib
 #  . ...
 Summary:	Page Speed native libraries
 Name:		libpagespeed
 Version:	1.12.16.0
-Release:	0.3
+Release:	0.4
 License:	Apache v2.0
 Group:		Libraries
 Source0:	%{name}-%{version}.tar.xz
@@ -54,13 +53,12 @@ CXX="%{__cxx}" \
 	--format=make \
 	--depth=. \
 	build/all.gyp \
-	-Duse_openssl=1 \
+	-Duse_openssl=0 \
 	-Duse_system_icu=0 \
 	-Duse_system_libjpeg=0 \
 	-Duse_system_libpng=0 \
 	-Duse_system_ssl=1 \
-	-Duse_system_zlib=0 \
-	%{nil}
+	-Duse_system_zlib=1 \
 
 %{__make} -r \
 	BUILDTYPE=%{!?debug:Release}%{?debug:Debug} \

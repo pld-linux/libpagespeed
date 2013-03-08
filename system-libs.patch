@@ -13,3 +13,55 @@
  
      # During the transition from third_party/protobuf2 to
      # third_party/protobuf, we need a single global definition of the
+--- libpagespeed-1.12.16.0/pagespeed/apps/apps.gyp	2013-03-08 02:52:27.839631948 +0200
++++ libpagespeed-1.12.16.0/pagespeed/apps/apps.gyp	2013-03-08 02:57:48.004425187 +0200
+@@ -74,6 +74,11 @@
+       'sources': [
+         'pagespeed.cc',
+       ],
++      'link_settings': {
++        'libraries': [
++          '-lz',
++        ],
++      },
+     },
+     {
+       'target_name': 'optimize_image_bin',
+@@ -89,6 +94,11 @@
+       'sources': [
+         'optimize_image.cc',
+       ],
++      'link_settings': {
++        'libraries': [
++          '-lz',
++        ],
++      },
+     },
+     {
+       'target_name': 'pagespeed_java',
+--- libpagespeed-1.12.16.0/pagespeed/pagespeed.gyp	2013-03-08 03:00:52.752961508 +0200
++++ libpagespeed-1.12.16.0/pagespeed/pagespeed.gyp	2013-03-08 03:02:46.954904884 +0200
+@@ -213,6 +213,11 @@
+       'defines': [
+         'RULES_TEST_DIR_PATH="pagespeed/rules/testdata/"',
+       ],
++      'link_settings': {
++        'libraries': [
++          '-lz',
++        ],
++      },
+     },
+     {
+       'target_name': 'pagespeed_image_test',
+@@ -246,6 +251,11 @@
+       'defines': [
+         'IMAGE_TEST_DIR_PATH="pagespeed/image_compression/testdata/"',
+       ],
++      'link_settings': {
++        'libraries': [
++          '-lz',
++        ],
++      },
+     },
+   ],
+ }

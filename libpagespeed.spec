@@ -8,7 +8,7 @@
 #  - gflags
 #  - giflib
 #  - gtest
-#  - icu
+#  - icu 4.6.1
 #  - libharu
 #  - libjpeg
 #  - libpng
@@ -20,13 +20,14 @@
 Summary:	Page Speed native libraries
 Name:		libpagespeed
 Version:	1.12.16.0
-Release:	0.2
+Release:	0.3
 License:	Apache v2.0
 Group:		Libraries
 Source0:	%{name}-%{version}.tar.xz
-# Source0-md5:	59922b57b304392a9364bb659ffc7d2c
+# Source0-md5:	8558c2b583e5858360846299284eb231
 Source1:	get-source.sh
 Source2:	gclient.conf
+Patch0:		system-libs.patch
 URL:		https://code.google.com/p/page-speed/
 BuildRequires:	libstdc++-devel
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -40,6 +41,7 @@ Page Speed rule logic.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 test %{_specdir}/%{name}.spec -nt Makefile && %{__rm} -f Makefile
@@ -52,10 +54,10 @@ CXX="%{__cxx}" \
 	build/all.gyp \
 	-Duse_openssl=1 \
 	-Duse_system_icu=0 \
-	-Duse_system_libjpeg=1 \
-	-Duse_system_libpng=1 \
+	-Duse_system_libjpeg=0 \
+	-Duse_system_libpng=0 \
 	-Duse_system_ssl=1 \
-	-Duse_system_zlib=1 \
+	-Duse_system_zlib=0 \
 	%{nil}
 
 %{__make} -r \
